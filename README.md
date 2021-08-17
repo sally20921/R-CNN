@@ -6,9 +6,15 @@ This repository implements a R-CNN-based object detectors on a custom dataset wi
 ## Install
 ```bash
 pip install -q --upgrade selectivesearch torch_snippets
+pip install numpy pandas scikit-image scipy
+pip install torch torchvision opencv-python 
+pip install kaggle --upgrade
 ```
 
 ## Prepare Data
+
+`kaggle.json` is the file you can get by clicking on Create New API token in your personal account.
+
 ```
 mkdir -p ~/.kaggle
 mv kaggle.json ~/.kaggle/
