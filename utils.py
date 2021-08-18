@@ -6,8 +6,17 @@ from torchvision.ops import nms
 import numpy as np
 from cv2 import cv2
 
-## regions[0] = {'labels': [0.0], 'rect': (0,0,15,24), 'size': 260}
 
+def decode(_y):
+    '''
+    decode the output of model
+    '''
+    _, preds = _y.max(-1)
+    return preds 
+
+
+
+## regions[0] = {'labels': [0.0], 'rect': (0,0,15,24), 'size': 260}
 def extract_candidates(img):
     '''
     Parameter
