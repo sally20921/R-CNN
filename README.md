@@ -1,7 +1,7 @@
 # R-CNN-based custom object detectors
 This repository implements a R-CNN-based object detectors on a custom dataset with detailed comments.
 
-[doc](https://github.com/sally20921/R-CNN/docs/DOC.md)
+[documentation](https://github.com/sally20921/R-CNN/docs/DOC.md)
 
 ## R-CNN Architecture
 ![Screen Shot 2021-08-18 at 6 47 26 AM](https://user-images.githubusercontent.com/38284936/129805064-5b4c7a2b-b3a7-40cb-8571-9001a1d804fc.png)
