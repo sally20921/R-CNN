@@ -22,6 +22,22 @@ class FRCNN(nn.Module):
         
         # nn.Module.children()
         # returns an iterator over immediate children modules
-        self.seq = nn.Sequential
-
+        self.seq = nn.Sequential(*list(rawnet.features.children())[:-1])
         
+        self.roipool = RoIPool(7, spatial_scale=14/224)
+        '''
+        torchvision.ops.roi_pool(input:torch.Tensor, boxes:torch.Tensor,output_size=None,spatial_scale:float=1.0) -> torch.Tensor
+
+        Parameters
+        ______
+        input: Tensor[N,C,H,W]
+            batch with N elements, each containing C feature maps of dimensions HxW
+        boxes: List[Tensor[L,4]]
+            the box coordinates (x1,y1,x2,y2) 
+        output_size: Tuple[int, int]
+            the size of the output
+        spatial_scale: float
+            scaling factor that maps input coordinates to box coordinates
+        '''
+        feature_dim = 512*7*7
+

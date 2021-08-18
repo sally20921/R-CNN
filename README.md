@@ -34,3 +34,11 @@ chmod 600 /root/.kaggle/kaggle.json
 kaggle datasets download -d sixhky/open-images-bus-trucks
 unzip -qq open-images-bus-trucks.zip
 ```
+
+## Testing
+1. Extract region proposals from the new image
+2. Resize and normalize each crop
+3. Feed-forward the processed crops to make predictions of class and the offsets
+4. Perform non-max suppression to fetch only those boxes that have the highest confidence of containing an object
+
+

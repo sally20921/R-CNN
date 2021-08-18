@@ -139,6 +139,35 @@ def prepare_data():
     background_class = label2target['background']
 
 class FRCNNDataset(data.Dataset):
+    def __init__(self, fpaths, rois, labels, deltas, gtbbs):
+        self.fpaths = fpaths
+        self.gtbbs = gtbbs
+        self.rois = rois
+        self.labels = labels
+        self.deltas = deltas
+
+    def __len__(self):
+        return len(self.fpaths)
+
+    def __getitem__(self, ix):
+        fpath = str(self.fpaths[ix])
+        image = cv2.imread(fpath, 1)[...,::-1] # channel to rgb
+        H, W, _ = image.shape
+        sh = np.array([W,H,W,H])
+
+        gtbbs = self.gtbbs[ix]
+        rois = self.rois[ix]
+        bbs = (np.array(rois)*sh).astype(np.uint16) #(xmin,ymin,xmax,ymax)
+        labels = self.labels[ix]
+        deltas = self.deltas[ix]
+        crops = [image[y:Y, x:X] for (x,y,X,Y) in bbs]
+        # crops: list of numpy arrays [HxW]
+        return image, crops, bbs, labels, deltas, gtbbs, fpath
+
+    def collate_fn(self, batch):
+
+
+
 
 
  
