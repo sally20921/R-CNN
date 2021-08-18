@@ -1,5 +1,5 @@
 ## Difference between *nn.modules* vs *nn.children*
-```
+```python
 class myNet(nn.Module):
   def __init__(self):
     super().__init__()
