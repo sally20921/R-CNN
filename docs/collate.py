@@ -56,10 +56,14 @@ def default_collate(batch):
             
             storage = elem.storage()._new_shared(numel)
             out = elem.new(storage)
-
+        
             # torch.stack(tensors, dim=0, *, out=None) -> Tensor
             # concatenates a sequence of tensors along a new dimension
             # all tensors need to be of the same size
+        return torch.stack(batch, 0, out=out)
+ 
+
+
 
 
 
